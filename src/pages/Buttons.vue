@@ -522,7 +522,8 @@ import NixCardHeader from '@/components/card/NixCardHeader.vue';
 import NixRadioButton from '@/components/button/NixRadioButton.vue';
 
 const dropdownItems = ref([
-  "item 1", "item 2"
+  { "label": "item 1" }, 
+  { "label": "item 2"}
 ]);
 
 const radioButtonItems = ref([
