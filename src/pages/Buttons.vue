@@ -502,6 +502,9 @@
                 :items="radioButtonItems" 
                 block btn-style="outline-primary"
                 @button-click="onButtonClick"></NixRadioButton>
+
+              <NixSwitchButton v-model="isSwitchOn" @toggle="switchHandle"
+                on-btn-style="warning" off-btn-style="danger"></NixSwitchButton>
             </NixCardBody>
           </NixCard>
         </div>
@@ -520,6 +523,7 @@ import NixCard from '@/components/card/NixCard.vue';
 import NixCardBody from '@/components/card/NixCardBody.vue';
 import NixCardHeader from '@/components/card/NixCardHeader.vue';
 import NixRadioButton from '@/components/button/NixRadioButton.vue';
+import NixSwitchButton from '@/components/button/NixSwitchButton.vue';
 
 const dropdownItems = ref([
   { "label": "item 1" }, 
@@ -537,5 +541,11 @@ const radioButtonItems = ref([
 
 const onButtonClick = (item: any) => {
   alert('Button clicked:' + JSON.stringify(item));
+};
+
+const isSwitchOn = ref(true); // Initial state for the switch
+
+const switchHandle = (v: any) => {
+  alert(v);
 };
 </script>
