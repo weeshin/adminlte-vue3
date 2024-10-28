@@ -1,56 +1,75 @@
 <template>
-  <component :is="renderModal" />
+  <Transition name="modal-fade">
+    <div v-if="props.show" class="modal show" tabindex="-1" role="dialog" style="display: block;">
+      <div :class="['modal-dialog', modalSize, 'modal-dialog-centered', 'modal-dialog-scrollable']" :style="{ width: props.width }" role="document">
+        <div class="modal-content" :class="[modalStyle]">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title">{{ props.title }}</h5>
+            <button type="button" class="close" @click="closeModal">×</button>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <slot name="body" />
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer justify-content-between">
+            <slot name="footer" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
-import { ref, h, Transition } from 'vue';
-import { hSlot } from '@/utils/render';
+import { defineProps, defineEmits, computed } from 'vue';
 
 const props = defineProps<{
   show: boolean;
   title: string;
   width?: string;
+  modalSize?: string;
+  modalStyle?: string;
 }>();
 
-const slots = defineSlots();
+const modalSize = computed(() => {
+  switch(props.modalSize) {
+    case 'small':
+      return 'modal-sm';
+    case 'large':
+      return 'modal-lg';
+    case 'xlarge':
+      return 'modal-xl';
+    default:
+      return '';
+  }
+});
+
+const modalStyle = computed(() => {
+  switch(props.modalStyle) {
+    case 'primary':
+      return 'bg-primary'
+    case 'secondary':
+      return 'bg-secondary'      
+    case 'primary':
+      return 'bg-info'
+    case 'primary':
+      return 'bg-danger'
+    case 'primary':
+      return 'bg-warning'
+    case 'primary':
+      return 'bg-success'
+    default:
+      return '';
+  }
+});
 
 const emit = defineEmits(['close']);
 
+// Emit close event
 const closeModal = () => {
   emit('close');
-};
-
-const renderModal = () => {
-  if (!props.show) return null;
-
-  const modalTitle = h('div', { class: 'modal-title' }, props.title);
-  const closeButton = h('button', { class: 'close', onClick: closeModal }, '×');
-  const modalHeader = h('div', { class: 'modal-header' }, [modalTitle, closeButton]);
-  const modalBody = h('div', { class: 'modal-body' }, hSlot(slots.body, slots.default));
-  const modalFooter = h('div', { class: 'modal-footer justify-content-between' }, hSlot(slots.footer));
-  const modalContent = h('div', { class: 'modal-content' }, [modalHeader, modalBody, modalFooter]);
-  const modalDialog = h('div', { class: 'modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable', role: 'document'}, [modalContent])
-
-
-  return h('div', { 
-    class: 'modal ' + (props.show ? 'show' : 'fade'), 
-    tabindex: '-1', 
-    role: 'dialog', 
-    style: 'display: block;' 
-  }, 
-  modalDialog);
-
-};
-
-
-</script>
-
-<script lang="ts">
-export default {
-  name: 'NixModal',
-  render() {
-    return h(Transition, { name: 'modal' }, renderModal);
-  }
 };
 </script>
 
@@ -60,14 +79,17 @@ export default {
   overflow-y: auto;
 }
 .modal-dialog {
-  max-height: 90vh; /* Adjust the max height to control the modal size */
+  max-height: 90vh; /* Control max height */
 }
 .modal-body {
   overflow-y: auto;
-  max-height: 60vh; /* Adjust the max height to control the scrollable area */
+  max-height: 60vh; /* Control scrollable area */
 }
-
-.modal.fade .modal-dialog {
-  transition: transform 0.3s ease-out;
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.modal-fade-enter, .modal-fade-leave-to /* .modal-fade-leave-active in <2.1.8 */ {
+  opacity: 0;
 }
 </style>
