@@ -503,7 +503,7 @@
                 block btn-style="outline-primary"
                 @button-click="onButtonClick"></NixRadioButton>
 
-              <NixSwitchButton v-model="isSwitchOn" @toggle="switchHandle"
+              <NixSwitchButton v-model="isSwitchOn.state" @update:modelValue="switchHandle(isSwitchOn)"
                 on-btn-style="warning" off-btn-style="danger"></NixSwitchButton>
             </NixCardBody>
           </NixCard>

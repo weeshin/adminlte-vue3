@@ -1,10 +1,10 @@
 <template>
   <div
-    :class="['bootstrap-switch', 'bootstrap-switch-wrapper', 'bootstrap-switch-animate', switchState.state ? 'bootstrap-switch-off' : 'bootstrap-switch-on']"
+    :class="['bootstrap-switch', 'bootstrap-switch-wrapper', 'bootstrap-switch-animate', switchState ? 'bootstrap-switch-off' : 'bootstrap-switch-on']"
     @click="toggleSwitch"
     style="width: 86px;"
   >
-    <div class="bootstrap-switch-container" style="width: 126px;" :style="[switchState.state ? 'margin-left: 0px;' : 'margin-left: -42px;']">
+    <div class="bootstrap-switch-container" style="width: 126px;" :style="[switchState ? 'margin-left: 0px;' : 'margin-left: -42px;']">
       <span class="bootstrap-switch-handle-on" :class="[onButtonStyle]" style="width: 42px;">ON</span>
       <span class="bootstrap-switch-label" style="width: 42px;">&nbsp;</span>
       <span class="bootstrap-switch-handle-off" :class="[offButtonStyle]" style="width: 42px;">OFF</span>
@@ -18,7 +18,7 @@ import { ref, defineProps, defineEmits, watch, computed } from 'vue';
 
 // Define the switch state prop and emit
 const props = defineProps<{
-  modelValue: { state: boolean };
+  modelValue: boolean;
   onBtnStyle?: string;
   offBtnStyle?: string;
 }>();
@@ -61,25 +61,23 @@ const offButtonStyle = computed(() => {
   }
 });
 
-const emit = defineEmits<{
-  (e: 'toggle', value: any): void;
-}>();
+const emit = defineEmits(['update:modelValue']);
 
 const switchState = ref(props.modelValue);
 
 // Watch for prop changes to update internal state
-watch(() => props.modelValue.state, (newVal) => {
-  switchState.value.state = newVal;
+watch(() => props.modelValue, (newVal) => {
+  switchState.value = newVal;
 });
 
 
 // Toggle the switch state and emit the new value
 const toggleSwitch = () => {
-  switchState.value.state = !switchState.value.state;
+  switchState.value = !switchState.value;
   emitSwitchState();
 };
 
-const emitSwitchState = () => {
-  emit('toggle', switchState.value);
+const emitSwitchState = () => {  
+  emit('update:modelValue', switchState.value);
 };
 </script>
