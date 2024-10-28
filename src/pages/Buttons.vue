@@ -543,9 +543,9 @@ const onButtonClick = (item: any) => {
   alert('Button clicked:' + JSON.stringify(item));
 };
 
-const isSwitchOn = ref(true); // Initial state for the switch
+const isSwitchOn = ref({ index: "1", state: true}); // Initial state for the switch
 
 const switchHandle = (v: any) => {
-  alert(v);
+  alert(JSON.stringify(v));
 };
 </script>
