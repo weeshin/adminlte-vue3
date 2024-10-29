@@ -1,7 +1,7 @@
 <template>
   <Transition name="modal-fade">
     <div v-if="props.show" class="modal show" tabindex="-1" role="dialog" style="display: block;">
-      <div :class="['modal-dialog', modalSize, 'modal-dialog-centered', 'modal-dialog-scrollable']" :style="{ width: props.width }" role="document">
+      <div :class="['modal-dialog', modalSize, modalCentered, modalScrollable]" :style="{ width: props.width }" role="document">
         <div class="modal-content" :class="[modalStyle]">
           <!-- Modal Header -->
           <div class="modal-header">
@@ -31,6 +31,8 @@ const props = defineProps<{
   width?: string;
   modalSize?: string;
   modalStyle?: string;
+  modalCentered?: boolean;
+  modalScrollable?: boolean;
 }>();
 
 const modalSize = computed(() => {
@@ -52,17 +54,31 @@ const modalStyle = computed(() => {
       return 'bg-primary'
     case 'secondary':
       return 'bg-secondary'      
-    case 'primary':
+    case 'info':
       return 'bg-info'
-    case 'primary':
+    case 'danger':
       return 'bg-danger'
-    case 'primary':
+    case 'warning':
       return 'bg-warning'
-    case 'primary':
+    case 'success':
       return 'bg-success'
     default:
       return '';
   }
+});
+
+const modalCentered = computed(() => {
+  if (props.modalCentered) {
+    return 'modal-dialog-centered';
+  }
+  return '';
+});
+
+const modalScrollable = computed(() => {
+  if (props.modalScrollable) {
+    return 'modal-dialog-scrollable';
+  }
+  return '';
 });
 
 const emit = defineEmits(['close']);
