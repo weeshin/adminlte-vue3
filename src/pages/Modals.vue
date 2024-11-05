@@ -42,6 +42,36 @@
 
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <NixCard card-style="card-primary card-outline">
+            <NixCardHeader>
+              <h1 class="card-title">
+                <i class="fas fa-edit"></i>
+                Toasts Examples
+                <small>built in AdminLTE</small>
+              </h1>
+            </NixCardHeader>
+            <NixCardBody>
+              <NixButton @click="showTopRight">Launch Default Toast</NixButton>
+              <NixButton @click="showToast = true">Launch Full Toast (with icon) </NixButton>
+              <NixButton @click="showToast = true">Launch Full Toast (with image) </NixButton>
+              <NixButton @click="showToast = true">Launch Full Toasts with autohide </NixButton>
+              <NixButton @click="showToast = true">Launch Full Toasts with not fixed </NixButton>
+              <br><br>
+              <NixButton @click="showTopLeft">Launch Full Toast (topleft) </NixButton>
+              <NixButton @click="showBottomRight">Launch Full Toast (bottomRight) </NixButton>
+              <NixButton @click="showBottomLeft">Launch Full Toast (bottomLeft) </NixButton>
+              <br><br>
+              <NixButton @click="showToast = true" btn-style="success">Launch Success Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="info">Launch Info Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="warning">Launch Warning Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="danger">Launch Danger Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="default" class="bg-maroon">Launch Maroon Toast</NixButton>
+            </NixCardBody>
+          </NixCard>
+        </div>
+      </div>
     </div>
     <NixModal 
       :show="showModal"
@@ -195,6 +225,10 @@
         <NixButton btn-style="primary" @click="showXlargeModal = false">Save changes</NixButton>                  
       </template>
     </NixModal>
+    <NixToast ref="toastTopRight" position-class="top-right"></NixToast>
+    <NixToast ref="toastTopLeft" position-class="top-left"></NixToast>
+    <NixToast ref="toastBottomRight" position-class="bottom-right"></NixToast>
+    <NixToast ref="toastBottomLeft" position-class="bottom-left"></NixToast>
   </section>
 </template>
   
@@ -205,6 +239,7 @@ import NixCard from '@/components/card/NixCard.vue';
 import NixCardHeader from '@/components/card/NixCardHeader.vue';
 import NixCardBody from '@/components/card/NixCardBody.vue';
 import NixButton from '@/components/button/NixButton.vue';
+import NixToast from '@/components/modal/NixToast.vue';
 
 const showModal = ref(false);
 const showPrimaryModal = ref(false);
@@ -216,6 +251,12 @@ const showSuccessModal = ref(false);
 const showSmallModal = ref(false);
 const showLargeModal = ref(false);
 const showXlargeModal = ref(false);
+
+const showToast = ref(false);
+const toastTopRight = ref();
+const toastTopLeft = ref();
+const toastBottomRight = ref();
+const toastBottomLeft = ref();
 
 const formData = ref({
 	firstName: '',
@@ -229,52 +270,20 @@ const formData = ref({
   dropdownOption: ''
 });
 
-const handleSubmit = () => {
-  console.log('Form submitted:', JSON.stringify(formData.value));
-  showModal.value = false;
+const showTopRight = () => {
+  toastTopRight.value.addToast("Top Right", "Top right", "the sub message");
 };
 
-const handleReset = () => {
-  console.log('Form reset');
-  formData.value = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    country: '',
-    state: '',
-    city: '',
-    selectedOption: '',
-    selectedCheckboxes: [],
-    dropdownOption: ''
-  };
+const showTopLeft = () => {  
+  toastTopLeft.value.addToast("Top Left", "something", "the sub message");
 };
 
-const handleValidationSuccess = () => {
-  console.log('Validation successful');
+const showBottomRight = () => {
+  toastBottomRight.value.addToast("Bottom Right", "Bottom right", "the sub message");
 };
 
-const handleValidationError = () => {
-  console.log('Validation error');
-};
-
-const validateFirstName = (value: string) => {
-  if (!value) {
-    return 'First name is required';
-  }
-  if (value.length < 2) {
-    return 'First name must be at least 2 characters';
-  }
-  return null;
-};
-
-const validateLastName = (value: string) => {
-  if (!value) {
-    return 'Last name is required';
-  }
-  if (value.length < 3) {
-    return 'Last name must be at least 3 characters';
-  }
-  return null;  
+const showBottomLeft = () => {
+  toastBottomLeft.value.addToast("Bottom Left", "Bottom Left", "the sub message");
 };
 
 const radioOptions = [
