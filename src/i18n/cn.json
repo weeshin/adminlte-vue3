@@ -17,7 +17,9 @@
         "calendars": "日曆",
         "layout": "布局",
         "charts": "图表",
-        "buttons": "按钮"
+        "buttons": "按钮",
+        "modals": "对话框",
+        "cards": "卡片"
     },
     "actionableDataTable": {
         "create": "创建",

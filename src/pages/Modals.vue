@@ -1,107 +1,262 @@
 <template>
-    <div>
-      <button @click="showModal = true">Open Modal</button>
-  
-      <NixModal 
-				:show="showModal"
-				title="My Form"
-				@close="showModal = false"
-			>
-        <template v-slot:default>
-          <NixForm
-							@submit="handleSubmit"
-              @reset="handleReset" 
-              @validation-success="handleValidationSuccess" 
-              @validation-error="handleValidationError">
-            <NixFormGroup :columns="2" caption="Personal Information">
-              <template #default>
-                <NixTextField
-                  :modelValue="formData.firstName"
-                  @update:modelValue="formData.firstName = $event"
-                  label="First Name"
-                  id="first-name"
-                  :validateField="validateFirstName"
-                />
-                <NixTextField 
-                  :modelValue="formData.lastName"
-                  @update:modelValue="formData.lastName = $event"
-                  label="Last Name"
-                  id="last-name"
-                  :validate-field="validateLastName"/>
-              </template>
-            </NixFormGroup>
-						<NixFormGroup :columns="2" caption="Contact Information">
-              <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" id="address" class="form-control" v-model="formData.address" />
-              </div>
-              <div class="form-group">
-                <label for="country">Country</label>
-                <input type="text" id="country" class="form-control" v-model="formData.country" />
-              </div>
-              <div class="form-group">
-                <label for="state">State</label>
-                <input type="text" id="state" class="form-control" v-model="formData.state" />
-              </div>              
-              <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" class="form-control" v-model="formData.city" />
-              </div>
-            </NixFormGroup>
-
-            <NixFormGroup :columns="2" caption="Options components">
-              <NixOptionGroup
-                :modelValue="formData.selectedOption"
-                @update:modelValue="(value: any) => formData.selectedOption = value"
-                :options="radioOptions"
-                label="Choose an option"
-                type="radio"
-                name="exampleRadio"
-                :validateField="validateSelection"
-              />
-              <NixOptionGroup
-                :modelValue="formData.selectedCheckboxes"
-                @update:modelValue="(value: any) => formData.selectedCheckboxes = value"
-                :options="checkboxOptions"
-                label="Choose multiple options"
-                type="checkbox"
-                name="exampleCheckbox"
-                :validateField="validateSelection"
-              />
-
-              <NixDropDown
-                :modelValue="formData.dropdownOption"
-                @update:modelValue="(value: any) => formData.dropdownOption = value"
-                :options="dropdownOptions"
-                label="Choose an option"
-                :validateField="validateSelection"
-              />
-            </NixFormGroup>
-            <div class="text-right">
-						  <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-          </NixForm>
-        </template>
-
-				<!-- <template v-slot:footer>
-					<div>
-						<button class="btn btn-secondary" @click="showModal = false">Close</button>
-          </div>
-				</template> -->
-      </NixModal>
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Modals & Alerts</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Modals & Alerts</li>
+          </ol>
+        </div>
+      </div>
     </div>
+  </section>  
+  <section class="content">
+    <div class="content-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <NixCard card-style="card-primary card-outline">
+            <NixCardHeader>
+              <h1 class="card-title">
+                <i class="fas fa-edit"></i>
+                Modal Examples
+              </h1>
+            </NixCardHeader>
+            <NixCardBody>
+              <NixButton @click="showModal = true">Launch Default Modal</NixButton>
+              <NixButton @click="showPrimaryModal = true" btn-style="primary">Launch Primary Modal</NixButton>
+              <NixButton @click="showSecondaryModal = true" btn-style="secondary">Launch Secondary Modal</NixButton>
+              <NixButton @click="showInfoModal = true" btn-style="info">Launch Info Modal</NixButton>
+              <NixButton @click="showDangerModal = true" btn-style="danger">Launch Danger Modal</NixButton>
+              <NixButton @click="showWarningModal = true" btn-style="warning">Launch Warning Modal</NixButton>
+              <NixButton @click="showSuccessModal = true" btn-style="success">Launch Success Modal</NixButton>
+              <br><br>
+              <NixButton @click="showSmallModal = true" >Launch Small Modal</NixButton>
+              <NixButton @click="showLargeModal = true" >Launch Large Modal</NixButton>
+              <NixButton @click="showXlargeModal = true" >Launch Extra Large Modal</NixButton>                            
+            </NixCardBody>    
+          </NixCard>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <NixCard card-style="card-primary card-outline">
+            <NixCardHeader>
+              <h1 class="card-title">
+                <i class="fas fa-edit"></i>
+                Toasts Examples
+                <small>built in AdminLTE</small>
+              </h1>
+            </NixCardHeader>
+            <NixCardBody>
+              <NixButton @click="showTopRight">Launch Default Toast</NixButton>
+              <NixButton @click="showToast = true">Launch Full Toast (with icon) </NixButton>
+              <NixButton @click="showToast = true">Launch Full Toast (with image) </NixButton>
+              <NixButton @click="showToast = true">Launch Full Toasts with autohide </NixButton>
+              <NixButton @click="showToast = true">Launch Full Toasts with not fixed </NixButton>
+              <br><br>
+              <NixButton @click="showTopLeft">Launch Full Toast (topleft) </NixButton>
+              <NixButton @click="showBottomRight">Launch Full Toast (bottomRight) </NixButton>
+              <NixButton @click="showBottomLeft">Launch Full Toast (bottomLeft) </NixButton>
+              <br><br>
+              <NixButton @click="showToast = true" btn-style="success">Launch Success Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="info">Launch Info Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="warning">Launch Warning Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="danger">Launch Danger Toast</NixButton>
+              <NixButton @click="showToast = true" btn-style="default" class="bg-maroon">Launch Maroon Toast</NixButton>
+            </NixCardBody>
+          </NixCard>
+        </div>
+      </div>
+    </div>
+    <NixModal 
+      :show="showModal"
+      title="Default Modal"
+      @close="showModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>        
+        <NixButton btn-style="default" @click="showModal = false">Close</NixButton>
+        <NixButton btn-style="primary" @click="showModal = false">Save changes</NixButton>
+      </template>
+    </NixModal> 
+    <NixModal 
+      :show="showPrimaryModal"
+      title="Primary Modal"
+      modal-style="primary"
+      @close="showPrimaryModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>        
+        <NixButton btn-style="outline-light" @click="showPrimaryModal = false">Close</NixButton>
+        <NixButton btn-style="outline-light" @click="showPrimaryModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>         
+    <NixModal 
+      :show="showSecondaryModal"
+      title="Secondary Modal"
+      modal-style="secondary"
+      @close="showSecondaryModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="outline-light" @click="showSecondaryModal = false">Close</NixButton>
+        <NixButton btn-style="outline-light" @click="showSecondaryModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>   
+    <NixModal 
+      :show="showInfoModal"
+      title="Info Modal"
+      modal-style="info"
+      @close="showInfoModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="outline-light" @click="showInfoModal = false">Close</NixButton>
+        <NixButton btn-style="outline-light" @click="showInfoModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixModal 
+      :show="showDangerModal"
+      title="Danger Modal"
+      modal-style="danger"
+      @close="showDangerModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="outline-light" @click="showDangerModal = false">Close</NixButton>
+        <NixButton btn-style="outline-light" @click="showDangerModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixModal 
+      :show="showWarningModal"
+      title="Warning Modal"
+      modal-style="warning"
+      @close="showWarningModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="outline-dark" @click="showWarningModal = false">Close</NixButton>
+        <NixButton btn-style="outline-dark" @click="showWarningModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixModal 
+      :show="showSuccessModal"
+      title="Success Modal"
+      modal-style="success"
+      @close="showSuccessModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="outline-light" @click="showSuccessModal = false">Close</NixButton>
+        <NixButton btn-style="outline-light" @click="showSuccessModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixModal 
+      :show="showSmallModal"
+      title="Small Modal"
+      modal-style="default"
+      modal-size="small"
+      @close="showSmallModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="default" @click="showSmallModal = false">Close</NixButton>
+        <NixButton btn-style="primary" @click="showSmallModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixModal 
+      :show="showLargeModal"
+      title="Large Modal"
+      modal-style="default"
+      modal-size="large"
+      @close="showLargeModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="default" @click="showLargeModal = false">Close</NixButton>
+        <NixButton btn-style="primary" @click="showLargeModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixModal 
+      :show="showXlargeModal"
+      title="Extra Large Modal"
+      modal-style="default"
+      modal-size="xlarge"
+      @close="showXlargeModal = false"            
+    >
+      <template v-slot:body>
+        <p>One fine body…</p>
+      </template>
+
+      <template v-slot:footer>
+        <NixButton btn-style="default" @click="showXlargeModal = false">Close</NixButton>
+        <NixButton btn-style="primary" @click="showXlargeModal = false">Save changes</NixButton>                  
+      </template>
+    </NixModal>
+    <NixToast ref="toastTopRight" position-class="top-right"></NixToast>
+    <NixToast ref="toastTopLeft" position-class="top-left"></NixToast>
+    <NixToast ref="toastBottomRight" position-class="bottom-right"></NixToast>
+    <NixToast ref="toastBottomLeft" position-class="bottom-left"></NixToast>
+  </section>
 </template>
   
 <script setup lang="ts">
 import { ref } from 'vue';
-import NixForm from '@/components/form/NixForm.vue';
-import NixFormGroup from '@/components/form/NixFormGroup.vue';
 import NixModal from '@/components/modal/NixModal.vue';
-import NixTextField from '@/components/field/NixTextField.vue';
-import NixOptionGroup from '@/components/field/NixOptionGroup.vue';
-import NixDropDown from '@/components/field/NixDropDown.vue';
+import NixCard from '@/components/card/NixCard.vue';
+import NixCardHeader from '@/components/card/NixCardHeader.vue';
+import NixCardBody from '@/components/card/NixCardBody.vue';
+import NixButton from '@/components/button/NixButton.vue';
+import NixToast from '@/components/modal/NixToast.vue';
 
 const showModal = ref(false);
+const showPrimaryModal = ref(false);
+const showSecondaryModal = ref(false);
+const showInfoModal = ref(false);
+const showDangerModal = ref(false);
+const showWarningModal = ref(false);
+const showSuccessModal = ref(false);
+const showSmallModal = ref(false);
+const showLargeModal = ref(false);
+const showXlargeModal = ref(false);
+
+const showToast = ref(false);
+const toastTopRight = ref();
+const toastTopLeft = ref();
+const toastBottomRight = ref();
+const toastBottomLeft = ref();
 
 const formData = ref({
 	firstName: '',
@@ -115,52 +270,20 @@ const formData = ref({
   dropdownOption: ''
 });
 
-const handleSubmit = () => {
-  console.log('Form submitted:', JSON.stringify(formData.value));
-  showModal.value = false;
+const showTopRight = () => {
+  toastTopRight.value.addToast("Top Right", "Top right", "the sub message");
 };
 
-const handleReset = () => {
-  console.log('Form reset');
-  formData.value = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    country: '',
-    state: '',
-    city: '',
-    selectedOption: '',
-    selectedCheckboxes: [],
-    dropdownOption: ''
-  };
+const showTopLeft = () => {  
+  toastTopLeft.value.addToast("Top Left", "something", "the sub message");
 };
 
-const handleValidationSuccess = () => {
-  console.log('Validation successful');
+const showBottomRight = () => {
+  toastBottomRight.value.addToast("Bottom Right", "Bottom right", "the sub message");
 };
 
-const handleValidationError = () => {
-  console.log('Validation error');
-};
-
-const validateFirstName = (value: string) => {
-  if (!value) {
-    return 'First name is required';
-  }
-  if (value.length < 2) {
-    return 'First name must be at least 2 characters';
-  }
-  return null;
-};
-
-const validateLastName = (value: string) => {
-  if (!value) {
-    return 'Last name is required';
-  }
-  if (value.length < 3) {
-    return 'Last name must be at least 3 characters';
-  }
-  return null;  
+const showBottomLeft = () => {
+  toastBottomLeft.value.addToast("Bottom Left", "Bottom Left", "the sub message");
 };
 
 const radioOptions = [
