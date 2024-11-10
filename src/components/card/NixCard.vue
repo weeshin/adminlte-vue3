@@ -3,12 +3,15 @@
 </template>
 
 <script setup lang="ts">
-import { h, defineSlots } from 'vue';
+import { h, defineSlots, defineProps } from 'vue';
 import { hSlot } from '@/utils/render';
 
+const props = defineProps<{
+  cardStyle?: string
+}>();
 const slots = defineSlots();
 
 const render = () => {
-  return h('div', { class: 'card' }, hSlot(slots.default))
+  return h('div', { class: ['card', props.cardStyle] }, hSlot(slots.default))
 };
 </script>

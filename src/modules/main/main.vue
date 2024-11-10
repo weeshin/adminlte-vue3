@@ -71,7 +71,7 @@ const menu = [
                 path: '/tables2'
             },
             {
-                name: 'Modals',
+                name: t('labels.modals'),
                 path: '/modals'
             },
             {
@@ -79,7 +79,7 @@ const menu = [
                 path: 'datepickers'
             },
             {
-                name: 'Cards',
+                name: t('labels.cards'),
                 path: 'cards'
             },
             {
@@ -89,7 +89,11 @@ const menu = [
             {
               name: 'Typography',
               path: 'typography'
-            }
+            },
+            {
+                name: t('labels.buttons'),
+                path: 'buttons'
+            }                        
         ]
     },
     {
