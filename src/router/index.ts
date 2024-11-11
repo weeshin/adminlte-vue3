@@ -64,12 +64,16 @@ const routes: Array<RouteRecordRaw> = [
                 component: Cards
             },
             {
-                path: '/charts',
+                path: 'charts',
                 component: Charts
             },
             {
-                path: '/typographys',
+                path: 'typographys',
                 component: Typographys
+            },
+            {
+                path: 'buttons',
+                component: Buttons
             }
         ],        
     } ,
