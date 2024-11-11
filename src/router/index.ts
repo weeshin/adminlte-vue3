@@ -66,6 +66,10 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '/charts',
                 component: Charts
+            },
+            {
+                path: '/typographys',
+                component: Typographys
             }
         ],        
     } ,
