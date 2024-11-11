@@ -13,6 +13,7 @@ import Cards from '@/pages/Cards.vue';
 import LayoutPage from '@/pages/LayoutPage.vue';
 import Charts from '@/pages/Charts.vue';
 import Buttons from '@pages/Buttons.vue';
+import Typographys from '@/pages/Typographys.vue';
 
 const routes: Array<RouteRecordRaw> = [  
     {
@@ -67,8 +68,8 @@ const routes: Array<RouteRecordRaw> = [
                 component: Charts
             },
             {
-                path: '/buttons',
-                component: Buttons
+                path: '/typographys',
+                component: Typographys
             }
         ],        
     } ,
