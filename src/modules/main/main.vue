@@ -44,10 +44,6 @@ const menu = [
                 path: '/tables'
             },  
             {
-                name: 'Tables 2',
-                path: '/tables2'
-            },
-            {
                 name: t('labels.modals'),
                 path: '/modals'
             },

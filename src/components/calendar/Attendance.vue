@@ -71,7 +71,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import Card from '@components/card.vue';
+import Card from '@/components/card/NixCard.vue';
 import AttendanceCell from '@/components/calendar/AttendanceCell.vue';
 
 const props = defineProps<{

@@ -148,8 +148,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import Card from '@/components/card.vue';
-import DualListbox from '@/components/dual-listbox.vue';
+import Card from '@/components/card/NixCard.vue';
+import DualListbox from '@/components/field/dual-listbox.vue';
 import Map from '@components/Map.vue';
 import NixList from '@/components/list/NixList.vue';
 

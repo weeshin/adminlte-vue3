@@ -39,7 +39,7 @@
   
 <script setup lang="ts">
   import { ref, defineProps, defineEmits, toRefs, computed } from 'vue';
-  import Card from './card.vue';
+  import Card from '@/components/card/NixCard.vue';
 
   const props = defineProps({
     availableItemTitle: {
