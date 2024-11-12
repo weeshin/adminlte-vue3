@@ -4,24 +4,9 @@
     </Layout>
 </template>
 
-<script lang="ts">
-import Layout from '@/components/layout/Layout.vue';
-import Header from './header/header.vue';
-import Footer from '@components/Footer.vue';
-import MenuSidebar from './menu-sidebar/menu-sidebar.vue';
-
-export default {
-  components: {
-    'app-header': Header,
-    'menu-sidebar': MenuSidebar,
-    'app-footer': Footer
-  },
-};
-
-</script>
-
 <script setup lang="ts">
 import {ref, onMounted, onUnmounted, computed, watch} from 'vue';
+import Layout from '@/components/layout/Layout.vue';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 
