@@ -1,8 +1,8 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router';
 
 import Main from '@/modules/main/main.vue';
-import Dashboard from '@/pages/dashboard.vue';
-import Dashboard2 from '@/pages/dashboard2.vue';
+import Dashboard from '@/pages/Dashboard.vue';
+import Dashboard2 from '@/pages/Dashboard2.vue';
 import Maps from '@pages/Maps.vue';
 import Tables from '@pages/Tables.vue';
 import Calendars from '@pages/Calendars.vue';
