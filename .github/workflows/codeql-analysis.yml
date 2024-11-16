@@ -2,12 +2,17 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: 
+    - "dev"
+    - "!dependabot/**"
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "dev" ]
+    branches: 
+      - "dev"
+      - "!dependabot/**"
   schedule:
     - cron: '0 5 * * 1' # Runs every Monday at 05:00 UTC
+  workflow_dispatch:
 
 jobs:
   analyze:
