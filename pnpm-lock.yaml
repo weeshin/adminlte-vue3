@@ -30,8 +30,8 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       bootstrap:
-        specifier: ^3.3.7
-        version: 3.4.1
+        specifier: ^5.3.3
+        version: 5.3.3(@popperjs/core@2.11.8)
       chart.js:
         specifier: ^4.4.3
         version: 4.4.3
@@ -113,7 +113,7 @@ importers:
         version: 2.0.6
       admin-lte:
         specifier: 3.2.0
-        version: 3.2.0(moment-timezone@0.5.45)(tempusdominus-core@5.19.3(jquery@3.7.1)(moment-timezone@0.5.45)(moment@2.30.1))
+        version: 3.2.0(@popperjs/core@2.11.8)(moment-timezone@0.5.45)(tempusdominus-core@5.19.3(jquery@3.7.1)(moment-timezone@0.5.45)(moment@2.30.1))
       cypress:
         specifier: ^13.13.0
         version: 13.13.0
@@ -815,6 +815,9 @@ packages:
 
   '@polka/url@1.0.0-next.25':
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
+
+  '@popperjs/core@2.11.8':
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
   '@profabric/vue-components@0.2.4':
     resolution: {integrity: sha512-JsDiEzQ13gMlOIfTljMQsHHFGZLAokMSOZmgGqWmjpL7b51Qkxr2oZKM66K9AyQJuS4RrfIWDtA7CwKZ350thA==}
@@ -1900,15 +1903,16 @@ packages:
   bootstrap4-duallistbox@4.0.2:
     resolution: {integrity: sha512-vQdANVE2NN0HMaZO9qWJy0C7u04uTpAmtUGO3KLq3xAZKCboJweQ437hDTszI6pbYV2olJCGZMbdhvIkBNGeGQ==}
 
-  bootstrap@3.4.1:
-    resolution: {integrity: sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==}
-    engines: {node: '>=6'}
-
   bootstrap@4.6.2:
     resolution: {integrity: sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==}
     peerDependencies:
       jquery: 1.9.1 - 3
       popper.js: ^1.16.1
+
+  bootstrap@5.3.3:
+    resolution: {integrity: sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.8
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -6981,6 +6985,8 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
+  '@popperjs/core@2.11.8': {}
+
   '@profabric/vue-components@0.2.4':
     dependencies:
       '@profabric/web-components': 0.2.4
@@ -7994,14 +8000,14 @@ snapshots:
 
   address@1.2.2: {}
 
-  admin-lte@3.2.0(moment-timezone@0.5.45)(tempusdominus-core@5.19.3(jquery@3.7.1)(moment-timezone@0.5.45)(moment@2.30.1)):
+  admin-lte@3.2.0(@popperjs/core@2.11.8)(moment-timezone@0.5.45)(tempusdominus-core@5.19.3(jquery@3.7.1)(moment-timezone@0.5.45)(moment@2.30.1)):
     dependencies:
       '@fortawesome/fontawesome-free': 5.15.4
       '@lgaitan/pace-progress': 1.0.7
       '@sweetalert2/theme-bootstrap-4': 5.0.17
       '@ttskch/select2-bootstrap4-theme': 1.5.2
       bootstrap: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
-      bootstrap-colorpicker: 3.4.0
+      bootstrap-colorpicker: 3.4.0(@popperjs/core@2.11.8)
       bootstrap-slider: 11.0.2
       bootstrap-switch: 3.3.4(bootstrap@4.6.2(jquery@3.7.1)(popper.js@1.16.1))(jquery@3.7.1)
       bootstrap4-duallistbox: 4.0.2
@@ -8058,6 +8064,7 @@ snapshots:
       toastr: 2.1.4
       uplot: 1.6.30
     transitivePeerDependencies:
+      - '@popperjs/core'
       - moment-timezone
       - tempusdominus-core
 
@@ -8462,11 +8469,13 @@ snapshots:
 
   boolbase@1.0.0: {}
 
-  bootstrap-colorpicker@3.4.0:
+  bootstrap-colorpicker@3.4.0(@popperjs/core@2.11.8):
     dependencies:
-      bootstrap: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
+      bootstrap: 5.3.3(@popperjs/core@2.11.8)
       jquery: 3.7.1
       popper.js: 1.16.1
+    transitivePeerDependencies:
+      - '@popperjs/core'
 
   bootstrap-slider@11.0.2: {}
 
@@ -8477,12 +8486,14 @@ snapshots:
 
   bootstrap4-duallistbox@4.0.2: {}
 
-  bootstrap@3.4.1: {}
-
   bootstrap@4.6.2(jquery@3.7.1)(popper.js@1.16.1):
     dependencies:
       jquery: 3.7.1
       popper.js: 1.16.1
+
+  bootstrap@5.3.3(@popperjs/core@2.11.8):
+    dependencies:
+      '@popperjs/core': 2.11.8
 
   brace-expansion@1.1.11:
     dependencies:
