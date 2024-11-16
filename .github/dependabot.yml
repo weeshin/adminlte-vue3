@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "03:00"
+    groups:
+      eslint:
+        patterns:
+          - "eslint"
+          - "eslint-*"
+          - "@typescript-eslint/*"
+      stylelint:
+        patterns:
+          - "stylelint"
+          - "stylelint-*"
+      prettier:
+        patterns:
+          - "prettier"
+          - "prettier-*"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+      postcss:
+        patterns:
+          - "postcss"
+          - "postcss-*"
+      vue:
+        patterns:
+          - "vue"
+          - "@vue/*"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
