@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import MonthlyGrid from "@components/Attendance.vue";
+import MonthlyGrid from "@/components/calendar/Attendance.vue";
 import axios from "axios";
 
 const data = ref([]);

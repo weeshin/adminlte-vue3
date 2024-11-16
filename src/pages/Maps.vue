@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import Map from '@components/Map.vue';
+import Map from '@components/map/Map.vue';
 
 const presetData: [number, number][] = [
   [3.2690515637244513, 101.65283525496457],

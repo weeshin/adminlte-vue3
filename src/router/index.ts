@@ -1,11 +1,10 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router';
 
 import Main from '@/modules/main/main.vue';
-import Dashboard from '@/pages/dashboard.vue';
-import Dashboard2 from '@/pages/dashboard2.vue';
+import Dashboard from '@/pages/Dashboard.vue';
+import Dashboard2 from '@/pages/Dashboard2.vue';
 import Maps from '@pages/Maps.vue';
 import Tables from '@pages/Tables.vue';
-import Tables2 from '@pages/Tables2.vue';
 import Calendars from '@pages/Calendars.vue';
 import Modals from '@pages/Modals.vue'
 import DatePickers from '@/pages/DatePickers.vue';
@@ -44,10 +43,6 @@ const routes: Array<RouteRecordRaw> = [
                 component: Tables
             },
             {
-                path: 'tables2',
-                component: Tables2
-            },
-            {
                 path: 'calendars',
                 component: Calendars
             },
@@ -64,12 +59,16 @@ const routes: Array<RouteRecordRaw> = [
                 component: Cards
             },
             {
-                path: '/charts',
+                path: 'charts',
                 component: Charts
             },
             {
-                path: '/typographys',
+                path: 'typographys',
                 component: Typographys
+            },
+            {
+                path: 'buttons',
+                component: Buttons
             }
         ],        
     } ,
