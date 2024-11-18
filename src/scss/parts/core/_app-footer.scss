@@ -1,0 +1,11 @@
+.app-footer {
+    grid-area: #{$satu-prefix}app-footer;
+    width: inherit;
+    max-width: 100vw;
+    min-height: 3rem;
+    padding: $satu-app-footer-padding;
+    color: $satu-app-footer-color;
+    background-color: $satu-app-footer-bg;
+    border-top: $satu-app-footer-border-top;
+    @include transition($satu-transition-speed $satu-transition-fn);
+}

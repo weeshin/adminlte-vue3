@@ -1,0 +1,36 @@
+// Prefix for :root CSS variables and others.
+$satu-prefix:                      satu- !default;
+
+// Transition global options
+$satu-transition-speed:            .3s !default;
+$satu-transition-fn:               ease-in-out !default;
+
+// SIDEBAR
+// --------------------------------------------------------
+$satu-sidebar-width:               250px !default;
+$satu-sidebar-breakpoint:          1g !default;
+$satu-sidebar-padding-x:             .5rem !default;
+$satu-sidebar-padding-x-compact:     .5rem !default;
+$satu-sidebar-padding-y:             .5rem !default;
+$satu-sidebar-padding-y-compact:     .25rem !default;
+
+// main header
+$satu-app-header-bottom-border-width: $border-width !default;
+$satu-app-header-bottom-border-color: var(--#{$prefix}border-color) !default;
+$satu-app-header-bottom-border:     $satu-app-header-bottom-border-width solid $satu-app-header-bottom-border-color !default;
+
+// content padding
+$satu-content-padding-y:           0 !default;
+$satu-content-padding-x:           .5rem !default;
+
+// main footer
+$satu-app-footer-padding:           1rem !default;
+$satu-app-footer-padding-compact:   .5rem !default;
+$satu-app-footer-border-top-width:  1px !default;
+$satu-app-footer-border-top-color:  var(--#{$prefix}border-color) !default;
+$satu-app-footer-border-top:        $satu-app-footer-border-top-width solid $satu-app-footer-border-top-color !default;
+$satu-app-footer-bg:                var(--#{$prefix}body-bg) !default;
+$satu-app-footer-color:             var(--#{$prefix}secondary-color) !default;
+
+// z-index
+$satu-zindex-app-header:            $zindex-fixed + 4 !default;
