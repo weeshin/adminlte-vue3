@@ -7,7 +7,6 @@ import Toast, { POSITION, PluginOptions } from 'vue-toastification';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import "vue-toastification/dist/index.css";
-// import './style.css'
 import './index.scss'
 import 'prismjs/themes/prism.css';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
