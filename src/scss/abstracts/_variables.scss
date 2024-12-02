@@ -112,6 +112,9 @@ $main-footer-height-sm-inner: (($font-size-sm * $line-height-base) + ($main-foot
 $main-footer-height-sm: calc(#{$main-footer-height-sm-inner} + #{$main-footer-border-top-width}) !default;
 $main-footer-bg: $white !default;
 
+// Buttons
+$button-border-radius: 5px;
+
 // SIDEBAR SKINS
 // --------------------------------------------------------
 
