@@ -32,6 +32,10 @@ const menu = [
         name: t('labels.widgets'),
         children: [
             {
+                name: t('labels.buttons'),
+                path: 'buttons'
+            },
+            {
                 name: t('labels.calendars'),
                 path: '/calendars'
             },
@@ -62,11 +66,7 @@ const menu = [
             {
               name: 'Typography',
               path: 'typographys'
-            },
-            {
-                name: t('labels.buttons'),
-                path: 'buttons'
-            }                        
+            },                       
         ]
     },
     {
