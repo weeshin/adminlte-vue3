@@ -67,9 +67,16 @@
   .text-sm & {
     font-size: $font-size-sm !important;
   }
+
 }
 
-
+@each $color, $value in $theme-colors {
+  .bg-gradient-#{$color} {
+    background-color: $value;
+    color: $white;
+    border-color: darken($light, 20%);      
+  }
+}
 
 @include dark-mode () {
   // .btn-default,
