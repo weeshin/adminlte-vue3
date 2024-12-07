@@ -36,6 +36,10 @@ const menu = [
                 path: 'buttons'
             },
             {
+                name: t('labels.modals'),
+                path: '/modals'
+            },            
+            {
                 name: t('labels.calendars'),
                 path: '/calendars'
             },
@@ -47,10 +51,6 @@ const menu = [
                 name: t('labels.tables'),
                 path: '/tables'
             },  
-            {
-                name: t('labels.modals'),
-                path: '/modals'
-            },
             {
                 name: 'DatePickers',
                 path: 'datepickers'
