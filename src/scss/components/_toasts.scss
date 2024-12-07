@@ -2,76 +2,59 @@
 // Component: Toasts
 //
 
-.toasts-top-right {
+// Toast Positions
+@mixin toast-position($position, $x, $y) {
   position: absolute;
-  right: 0;
-  top: 0;
+  #{$x}: 0;
+  #{$y}: 0;
   z-index: $zindex-toasts;
 
   &.fixed {
     position: fixed;
   }
+}
+
+.toasts-top-right {
+  @include toast-position(top-right, right, top);
 }
 
 .toasts-top-left {
-  left: 0;
-  position: absolute;
-  top: 0;
-  z-index: $zindex-toasts;
-
-  &.fixed {
-    position: fixed;
-  }
+  @include toast-position(top-left, left, top);
 }
 
 .toasts-bottom-right {
-  bottom: 0;
-  position: absolute;
-  right: 0;
-  z-index: $zindex-toasts;
-
-  &.fixed {
-    position: fixed;
-  }
+  @include toast-position(bottom-right, right, bottom);
 }
 
 .toasts-bottom-left {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  z-index: $zindex-toasts;
-
-  &.fixed {
-    position: fixed;
-  }
+  @include toast-position(bottom-left, left, bottom);
 }
 
-@include dark-mode () {
+// Dark Mode Toast Styles
+@include dark-mode() {
   .toast {
-    background-color: rgba($dark, .85);
+    background-color: rgba($dark, 0.85);
     color: $white;
 
     .toast-header {
-      background-color: rgba($dark, .7);
+      background-color: rgba($dark, 0.7);
       color: $gray-100;
     }
 
-    @each $name, $color in $theme-colors-dark {
-      @include toast-variant($name, $color);
-    }
-
-    @each $name, $color in $colors-dark {
-      @include toast-variant($name, $color);
-    }
+    // @include toast-theme-variants($theme-colors-dark);
+    // @include toast-theme-variants($colors-dark);
   }
 }
 
+// Toast Theme Variants
+@mixin toast-theme-variants($colors-map) {
+  @each $name, $color in $colors-map {
+    @include toast-variant($name, $color);
+  }
+}
 
+// Toast Styles
 .toast {
-  @each $name, $color in $theme-colors {
-    @include toast-variant($name, $color);
-  }
-  @each $name, $color in $colors {
-    @include toast-variant($name, $color);
-  }
+  @include toast-theme-variants($theme-colors);
+  @include toast-theme-variants($colors);
 }
